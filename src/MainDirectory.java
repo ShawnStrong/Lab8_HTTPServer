@@ -38,12 +38,14 @@ public class MainDirectory implements Directory {
 		ArrayList<Employee> incoming = (g.fromJson(s, new TypeToken<Collection<Employee>>() {
 		}.getType()));
 		for (Employee emp : incoming) {
-			// pp.print();
+			//emp.print();
 			addAndSort(emp);
 		}
 
 	}
 
+	// add an employee to sorted list then it will sort itself
+	
 	void addAndSort(Employee emp) {
 		if (sorted.size() == 0) {
 			sorted.add(emp);
