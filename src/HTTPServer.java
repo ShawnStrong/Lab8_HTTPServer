@@ -30,6 +30,7 @@ public class HTTPServer {
 		// create a context to get the request to print the dudes from the
 		// server
 		server.createContext("/print", new PrintHandler());
+		server.createContext("/clear", new ClearHandler());
 		server.setExecutor(null); // creates a default executor
 
 		// get it going
@@ -87,6 +88,12 @@ public class HTTPServer {
 	static class PrintHandler implements HttpHandler {
 		public void handle(HttpExchange t) throws IOException {
 			s.print();
+		}
+	}
+	
+	static class ClearHandler implements HttpHandler {
+		public void handle(HttpExchange t) throws IOException {
+			s.clear();
 		}
 	}
 }
