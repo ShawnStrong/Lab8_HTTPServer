@@ -87,13 +87,71 @@ public class HTTPServer {
 	
 	static class PrintHandler implements HttpHandler {
 		public void handle(HttpExchange t) throws IOException {
-			s.print();
+			sharedResponse = "";
+			
+            // set up a stream to read the body of the request
+            InputStream inputStr = t.getRequestBody();
+
+            // set up a stream to write out the body of the response
+            OutputStream outputStream = t.getResponseBody();
+
+            // string to hold the result of reading in the request
+            StringBuilder sb = new StringBuilder();
+
+            // read the characters from the request byte by byte and build up the sharedResponse
+            int nextChar = inputStr.read();
+            while (nextChar > -1) {
+                sb=sb.append((char)nextChar);
+                nextChar=inputStr.read();
+            }
+            
+            
+            s.print();
+            
+            
+            
+
+            String postResponse = "Json received";
+            t.sendResponseHeaders(300, postResponse.length());
+            // write it and return it
+            outputStream.write(postResponse.getBytes());
+
+            outputStream.close();
 		}
 	}
 	
 	static class ClearHandler implements HttpHandler {
 		public void handle(HttpExchange t) throws IOException {
-			s.clear();
+sharedResponse = "";
+			
+            // set up a stream to read the body of the request
+            InputStream inputStr = t.getRequestBody();
+
+            // set up a stream to write out the body of the response
+            OutputStream outputStream = t.getResponseBody();
+
+            // string to hold the result of reading in the request
+            StringBuilder sb = new StringBuilder();
+
+            // read the characters from the request byte by byte and build up the sharedResponse
+            int nextChar = inputStr.read();
+            while (nextChar > -1) {
+                sb=sb.append((char)nextChar);
+                nextChar=inputStr.read();
+            }
+            
+            
+            s.clear();
+            
+            
+            
+
+            String postResponse = "Json received";
+            t.sendResponseHeaders(300, postResponse.length());
+            // write it and return it
+            outputStream.write(postResponse.getBytes());
+
+            outputStream.close();
 		}
 	}
 }
