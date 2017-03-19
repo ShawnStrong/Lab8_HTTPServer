@@ -44,6 +44,7 @@ public class Employee {
 	
 	public void print()
 	{
+		System.out.println();
 		if(title != null)
 		{	
 			System.out.print(title);
@@ -51,7 +52,7 @@ public class Employee {
 		System.out.print(last + ", " + first + ", " + num + ", " + dep);
 		if(gender != null)
 		{
-			System.out.println(", " + gender);
+			System.out.print(", " + gender);
 		}
 	}
 	
